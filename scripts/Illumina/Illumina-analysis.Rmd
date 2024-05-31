@@ -161,6 +161,8 @@ project.bgcorrect.norm <- neqc(project, offset = 16)
 
 ```{r}
 expression_data<-as.data.frame(project.bgcorrect.norm.filt.mean[["E"]])
+
+detection_probe<-as.data.frame(project.bgcorrect.norm.filt.mean[["other"]][["Detection"]])
 ```
 
 
@@ -176,7 +178,7 @@ dev.off()
 
 ```{r}
 #calculate no of samples below p values of 0.01
-boolean_values<-detection_probe<0.01
+boolean_values<-detectionpvalues<0.01
 
 count_true = data.frame(matrix(NA, nrow = nrow(detection_probe), ncol = 1))
 count_false = data.frame(matrix(NA, nrow =nrow(detection_probe), ncol = 1))
